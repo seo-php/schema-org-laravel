@@ -1,0 +1,46 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "seophp/schema-org-laravel",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "seophp",
+        "seo",
+        "schema-org",
+        "json-ld",
+        "laravel"
+    ],
+    "require": {
+        "php": "^8.4",
+        "illuminate/support": ">=12.0",
+        "seophp/head": "self.version",
+        "seophp/schema-org": "self.version"
+    },
+    "require-dev": {
+        "seophp/head-laravel": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Seo\\SchemaOrg\\Laravel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Seo\\SchemaOrg\\Laravel\\Tests\\": "tests"
+        }
+    },
+    "prefer-stable": true,
+    "suggest": {
+        "seophp/head-laravel": "Registers Head in the container and renders tags in your layout. Required for automatic JSON-LD output unless you bind Seo\\Head\\Head yourself."
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Seo\\SchemaOrg\\Laravel\\SchemaOrgServiceProvider"
+            ]
+        }
+    }
+}

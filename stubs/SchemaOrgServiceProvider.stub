@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DummyNamespace;
+
+use Seo\SchemaOrg\Graph;
+use Seo\SchemaOrg\Laravel\Providers\SchemaOrgServiceProvider as ServiceProvider;
+use Seo\SchemaOrg\Types\Organization;
+use Seo\SchemaOrg\Types\WebSite;
+
+final class SchemaOrgServiceProvider extends ServiceProvider
+{
+    protected function configure(Graph $graph): void
+    {
+        $graph->add(
+            Organization::make()
+                ->id('https://example.com/#organization')
+                ->name('Example Inc.')
+                ->url('https://example.com'),
+        );
+
+        $graph->add(
+            WebSite::make()
+                ->id('https://example.com/#website')
+                ->name('Example')
+                ->url('https://example.com'),
+        );
+    }
+}
