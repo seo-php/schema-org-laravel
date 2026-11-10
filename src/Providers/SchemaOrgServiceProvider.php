@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Seo\SchemaOrg\Laravel\Providers;
 
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Support\ServiceProvider;
 use Seo\Head\Head;
 use Seo\SchemaOrg\Graph;
@@ -21,8 +22,8 @@ abstract class SchemaOrgServiceProvider extends ServiceProvider
             return $graph;
         });
 
-        $this->app->afterResolving(Head::class, function (Head $head): void {
-            $head->plugin(SchemaOrgPlugin::make($this->app->make(Graph::class)));
+        $this->app->afterResolving(Head::class, function (Head $head, Container $app): void {
+            $head->plugin(SchemaOrgPlugin::make($app->make(Graph::class)));
         });
     }
 
